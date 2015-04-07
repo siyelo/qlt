@@ -1,5 +1,6 @@
 require "qlt/version"
+require "qlt/price"
+require "qlt/location"
 
 module Qlt
-  # Your code goes here...
 end
