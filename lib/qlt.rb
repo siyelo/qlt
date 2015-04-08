@@ -4,8 +4,9 @@ require "qlt/configuration"
 require "qlt/price"
 require "qlt/location"
 require "qlt/response"
-require "qlt/solutions_factory"
-require "qlt/solution"
+require "qlt/nodes_factory"
+require "qlt/fibre_node"
+require "qlt/wifi_node"
 
 module Qlt
   class << self
@@ -17,8 +18,11 @@ module Qlt
     end
 
     def basic attrs
-    	Qlt::API.basic(attrs)
-  	end
+      raise "Please provide latitude." if attrs[:latitude].nil?
+      raise "Please provide longitude." if attrs[:longitude].nil?
+      raise "Please provide the wireless flag (true/false)." if attrs[:wireless].nil?
+      Qlt::API.basic(attrs)
+    end
 
   end
 end
