@@ -1,7 +1,6 @@
 require "net/http"
 
 class Qlt::API
-  TEST_API = "http://demo.awsm.co.za/is/api/json.php"
 
   class << self
 
@@ -20,7 +19,7 @@ class Qlt::API
   end
 
   def basic
-    uri = URI(TEST_API)
+    uri = URI(api_url)
     uri.query = URI.encode_www_form(build_params)
     body = Net::HTTP.get_response(uri).body
     Qlt::Response.build(body)
@@ -34,6 +33,14 @@ class Qlt::API
 
   def build_params
     { wireless: @attrs[:wireless], lng: @attrs[:longitude], lat: @attrs[:latitude] }
+  end
+
+  def api_url
+    if Qlt.configuration.env == :production
+      "http://awsm.co.za/is/api/json.php"
+    else
+      "http://demo.awsm.co.za/is/api/json.php"
+    end
   end
 
 end
