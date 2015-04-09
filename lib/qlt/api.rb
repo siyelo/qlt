@@ -19,9 +19,16 @@ class Qlt::API
   end
 
   def basic
-    uri = URI(api_url)
+    uri = URI.parse(api_url)
     uri.query = URI.encode_www_form(build_params)
-    body = Net::HTTP.get_response(uri).body
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    req = Net::HTTP::Get.new(uri.request_uri)
+    req.add_field("X-Key", Qlt.configuration.key)
+    req.add_field("X-Secret", Qlt.configuration.secret)
+
+    body = http.request(req).body
+
     Qlt::Response.build(body)
   end
 

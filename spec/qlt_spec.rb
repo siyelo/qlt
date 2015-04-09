@@ -13,7 +13,16 @@ describe Qlt do
     end
 
     it 'sends a basic request for available solutions' do
-      expect(Qlt.basic({ latitude: 1, longitude: 1, wireless: true})).to be_kind_of Qlt::Response
+      VCR.use_cassette("zone2_request") do
+        result = Qlt.basic({ latitude: -26.5583, longitude: 28.0197, wireless: true})
+        expect(result).to be_kind_of Qlt::Response
+        expect(result.solutions.first.zone).to eq 2
+        expect(result.solutions.first.type).to eq 'fibre2'
+        expect(result.solutions.first.name).to eq 'Meyerton'
+        expect(result.solutions.first.distance).to eq "583.76017612524"
+        expect(result.solutions.first.location.latitude).to eq "-26.557097"
+        expect(result.solutions.first.location.longitude).to eq "28.013987"
+      end
     end
 
     it 'raises exceptions if missing required params' do
