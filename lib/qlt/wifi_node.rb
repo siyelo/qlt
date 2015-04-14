@@ -1,5 +1,5 @@
 class Qlt::WiFiNode
-  attr_reader :type, :highsite, :distance, :location
+  attr_reader :type, :name, :distance, :location
 
   def initialize solution
     @type = solution['type']

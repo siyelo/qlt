@@ -17,7 +17,7 @@ module Qlt
       yield(configuration)
     end
 
-    def prices attrs
+    def lookup attrs
       Qlt::API.prices_lookup(attrs)
     end
   end

@@ -7,16 +7,12 @@ This is a Ruby gem that serves as a wrapper for Internet Solutions' Quick Lookup
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'qlt'
+gem 'qlt', github: 'https://github.com/siyelo/qlt'
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install qlt
 
 ## Usage
 
@@ -32,16 +28,22 @@ end
 
 ### Fetching possible solutions
 
-Fetching of available solutions (and the price) is done via the ```Qlt.prices``` method.
+Fetching of available solutions (and the price) is done via the ```Qlt.lookup``` method.
 
 ```ruby
-Qlt.prices({ latitude: '12.12', longitude: '13.13', wireless: true, speed: 10, term: 12 })
+Qlt.lookup({
+  latitude: 12.12,
+  longitude: 13.13,
+  with_wireless: true,
+  speed: 10, # MBps
+  contract_length: 12 # Months
+})
 ```
 
-This sends a lookup request for the given parameters. Returns a ```Qlt::Response``` object that contains:
-- the searched coordinates
-- the price of the solutions
-- a list of possible solutions
+This sends a lookup request for the given arguments. Returns a ```Qlt::Response``` object that contains:
+- the searched coordinates (as a Qlt::Location entity)
+- the price of the solutions (as a Qlt::Price entity)
+- a list of possible solutions (as an Array)
   - a solution can be of type ```Qlt::FibreNode``` or ```Qlt::WiFiNode```
 
 ### Available Entities

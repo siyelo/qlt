@@ -31,23 +31,23 @@ class Qlt::API
   private
 
   def filter_params
-    raise ArgumentError.new("missing :latitude")  if @attrs[:latitude].nil?
+    raise ArgumentError.new("missing :latitude") if @attrs[:latitude].nil?
     raise ArgumentError.new("missing :longitude") if @attrs[:longitude].nil?
-    raise ArgumentError.new("missing :speed")     if @attrs[:speed].nil?
-    raise ArgumentError.new("missing :term")      if @attrs[:term].nil?
+    raise ArgumentError.new("missing :speed") if @attrs[:speed].nil?
+    raise ArgumentError.new("missing :contract_length") if @attrs[:contract_length].nil?
   end
 
   def build_params
     filter_params
 
     {
-      wireless: @attrs[:wireless] || true,
+      wireless: @attrs[:with_wireless] || true,
       lng: @attrs[:longitude],
       lat: @attrs[:latitude],
       price: true,
       sla: @attrs[:sla] || 'economy',
       speed: @attrs[:speed],
-      term: @attrs[:term]
+      term: @attrs[:contract_length]
     }
   end
 
