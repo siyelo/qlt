@@ -4,12 +4,8 @@ class Qlt::API
 
   class << self
 
-    def basic attrs
-      new(attrs).basic
-    end
-
-    def prices
-      new(attrs).prices
+    def prices_lookup attrs
+      new(attrs).prices_lookup
     end
 
   end
@@ -18,7 +14,7 @@ class Qlt::API
     @attrs = attrs
   end
 
-  def basic
+  def prices_lookup
     uri = URI.parse(api_url)
     uri.query = URI.encode_www_form(build_params)
     http = Net::HTTP.new(uri.host, uri.port)
@@ -32,14 +28,27 @@ class Qlt::API
     Qlt::Response.build(body)
   end
 
-  def prices
-    raise "TO BE IMPLEMENTED"
-  end
-
   private
 
+  def filter_params
+    raise ArgumentError.new("missing :latitude")  if @attrs[:latitude].nil?
+    raise ArgumentError.new("missing :longitude") if @attrs[:longitude].nil?
+    raise ArgumentError.new("missing :speed")     if @attrs[:speed].nil?
+    raise ArgumentError.new("missing :term")      if @attrs[:term].nil?
+  end
+
   def build_params
-    { wireless: @attrs[:wireless], lng: @attrs[:longitude], lat: @attrs[:latitude] }
+    filter_params
+
+    {
+      wireless: @attrs[:wireless] || true,
+      lng: @attrs[:longitude],
+      lat: @attrs[:latitude],
+      price: true,
+      sla: @attrs[:sla] || 'economy',
+      speed: @attrs[:speed],
+      term: @attrs[:term]
+    }
   end
 
   def api_url

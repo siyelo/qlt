@@ -17,12 +17,8 @@ module Qlt
       yield(configuration)
     end
 
-    def basic attrs
-      raise "Please provide latitude." if attrs[:latitude].nil?
-      raise "Please provide longitude." if attrs[:longitude].nil?
-      raise "Please provide the wireless flag (true/false)." if attrs[:wireless].nil?
-      Qlt::API.basic(attrs)
+    def prices attrs
+      Qlt::API.prices_lookup(attrs)
     end
-
   end
 end

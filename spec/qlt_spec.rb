@@ -5,16 +5,16 @@ describe Qlt do
     expect(Qlt::VERSION).not_to be nil
   end
 
-  describe '#basic' do
+  describe '#prices' do
     before :each do
       Qlt.configure do |c|
         c.env = :development
       end
     end
 
-    it 'sends a basic request for available solutions' do
-      VCR.use_cassette("zone2_request") do
-        result = Qlt.basic({ latitude: -26.5583, longitude: 28.0197, wireless: true})
+    it 'sends a prices lookup request for available solutions' do
+      VCR.use_cassette("pricing_request") do
+        result = Qlt.prices({ latitude: -26.5583, longitude: 28.0197, wireless: true, speed: 10, term: 36})
         expect(result).to be_kind_of Qlt::Response
         expect(result.solutions.first.zone).to eq 2
         expect(result.solutions.first.type).to eq 'fibre2'
@@ -25,18 +25,5 @@ describe Qlt do
       end
     end
 
-    it 'raises exceptions if missing required params' do
-      expect{
-        Qlt.basic({ latitude: 1 })
-      }.to raise_error("Please provide longitude.")
-
-      expect{
-        Qlt.basic({ longitude: 1 })
-      }.to raise_error("Please provide latitude.")
-
-      expect{
-        Qlt.basic({ latitude: 1, longitude: 1})
-      }.to raise_error("Please provide the wireless flag (true/false).")
-    end
   end
 end
