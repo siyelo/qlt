@@ -22,11 +22,11 @@ Or install it yourself as:
 
 ### Configuration
 
-Configuration is done by providing an environment variable in the configuration block. Example:
+Configuration is done by setting the API environment you want to use. Example:
 
 ```ruby
 Qlt.configure do |config|
-  config.env = :production
+  config.env = :production # or :development
 end
 ```
 
@@ -70,7 +70,7 @@ should be added as a part of the gem runtime configuration, like:
 
 ```ruby
 Qlt.configure do |c|
-  c.env = :production
+  c.env = :production # or :development
   c.key = 'YOUR_KEY'
   c.secret = 'YOUR_SECRET'
 end
