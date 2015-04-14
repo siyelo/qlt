@@ -38,9 +38,9 @@ Fetching of available solutions (and the price) is done via the ```Qlt.prices```
 Qlt.prices({ latitude: '12.12', longitude: '13.13', wireless: true, speed: 10, term: 12 })
 ```
 
-Sends a lookup request for the given parameters. Returns a ```Qlt::Response``` object that contains:
+This sends a lookup request for the given parameters. Returns a ```Qlt::Response``` object that contains:
 - the searched coordinates
-- the price of the solution
+- the price of the solutions
 - a list of possible solutions
   - a solution can be of type ```Qlt::FibreNode``` or ```Qlt::WiFiNode```
 
@@ -69,7 +69,7 @@ the gem should write customer solution data to the QLT, the ```key``` and ```sec
 should be added as a part of the gem runtime configuration, like:
 
 ```ruby
-Qlt.configuration do |c|
+Qlt.configure do |c|
   c.env = :production
   c.key = 'YOUR_KEY'
   c.secret = 'YOUR_SECRET'
