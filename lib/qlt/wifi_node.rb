@@ -3,7 +3,7 @@ class Qlt::WiFiNode
 
   def initialize solution
     @type = solution['type']
-    @highsite = solution['highsite']
+    @name = solution['highsite']
     @distance = solution['distance']
     @location = Qlt::Location.new({ latitude: solution['highsite_lat'], longitude: solution['highsite_lng'] })
   end

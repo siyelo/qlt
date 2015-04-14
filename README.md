@@ -51,7 +51,7 @@ This sends a lookup request for the given parameters. Returns a ```Qlt::Response
 - ```Qlt::Price``` is an entity that holds the pricing data. Contains the **mrc** and **nrc** prices.
 - ```Qlt::WifiNode``` is an entity representing a WiFi solution. Contains:
   - ```type```
-  - ```highsite``` - the name of the node
+  - ```name``` - the name of the node
   - ```distance``` - distance between the node and the customer location
   - ```location``` - Qlt::Location object, representing the location of the node
 - ```Qlt::FibreNode``` is an entity representing a Fibre solution. Contains:

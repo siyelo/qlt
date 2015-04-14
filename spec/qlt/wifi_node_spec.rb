@@ -17,8 +17,8 @@ describe Qlt::WiFiNode do
     expect(node.type).to eq "wi_std"
   end
 
-  it '#highsite - returns the name of the node' do
-    expect(node.highsite).to eq "JHI"
+  it '#name - returns the name of the node' do
+    expect(node.name).to eq "JHI"
   end
 
   it '#distance - returns the distance of the node' do
