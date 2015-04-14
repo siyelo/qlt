@@ -7,7 +7,7 @@ This is a Ruby gem that serves as a wrapper for Internet Solutions' Quick Lookup
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'qlt', github: 'https://github.com/siyelo/qlt'
+gem 'qlt', github: 'siyelo/qlt'
 ```
 
 And then execute:
