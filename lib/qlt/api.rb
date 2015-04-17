@@ -21,8 +21,8 @@ module Qlt
       http = Net::HTTP.new(uri.host, uri.port)
 
       req = Net::HTTP::Get.new(uri.request_uri)
-      req.add_field("X-Key", Qlt.configuration.key)
-      req.add_field("X-Secret", Qlt.configuration.secret)
+      req.add_field("X-Key", Qlt.configuration.key) if Qlt.configuration.key
+      req.add_field("X-Secret", Qlt.configuration.secret) if Qlt.configuration.secret
 
       body = http.request(req).body
 
