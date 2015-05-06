@@ -36,7 +36,11 @@ Qlt.lookup({
   longitude: 13.13,
   with_wireless: true,
   speed: 10, # MBps
-  contract_length: 12 # Months
+  contract_length: 12, # Months
+  account_manager: "John Doe", # Account Manager Name
+  company_name: "Siyelo", # Name of the client
+  address: "Some Address 123", # Address to identify the site
+  opt_ref: 12 # ID of the OPT Quote
 })
 ```
 
