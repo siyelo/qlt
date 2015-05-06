@@ -52,7 +52,7 @@ module Qlt
         am_name: @attrs[:account_manager],
         company_name: @attrs[:company_name],
         address: @attrs[:address],
-        opt_ref: @attrs[:opt_ref]
+        OPT_ref: @attrs[:opt_ref]
       }
     end
 
