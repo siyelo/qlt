@@ -48,7 +48,11 @@ module Qlt
         price: true,
         sla: @attrs[:sla] || 'economy',
         speed: @attrs[:speed],
-        term: @attrs[:contract_length]
+        term: @attrs[:contract_length],
+        am_name: @attrs[:account_manager],
+        company_name: @attrs[:company_name],
+        address: @attrs[:address],
+        opt_ref: @attrs[:opt_ref]
       }
     end
 
