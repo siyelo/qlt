@@ -53,6 +53,7 @@ This sends a lookup request for the given arguments. Returns a ```Qlt::Response`
 ### Available Entities
 
 - ```Qlt::Response``` is an entity that holds all of the returned data from the QLT API.
+  - ```reference_number``` is the QLT reference number for the LM solution saved on QLT side.
 - ```Qlt::Location``` is an entity representing a location, holds the latitude and longitude coordinates.
 - ```Qlt::Price``` is an entity that holds the pricing data. Contains the **mrc** and **nrc** prices.
 - ```Qlt::WifiNode``` is an entity representing a WiFi solution. Contains:

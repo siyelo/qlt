@@ -7,13 +7,14 @@ class Qlt::Response
     end
   end
 
-  attr_reader :location, :price, :solutions
+  attr_reader :location, :price, :solutions, :reference_number
 
   def initialize response_body
     @data = JSON.parse(response_body)
     @location = Qlt::Location.new({ latitude: @data['lat'], longitude: @data['lng'] })
     @price = Qlt::Price.new({ nrc: prices['NRC'], mrc: prices['MRC'] })
     @solutions = Qlt::NodesFactory.build(@data['available_solutions'])
+    @reference_number = @data.fetch("QLT_ref", "")
   end
 
   private

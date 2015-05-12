@@ -26,7 +26,8 @@ describe Qlt::Response do
         "price": {
           "NRC": 123,
           "MRC": 321
-        }
+        },
+        "QLT_ref": "IS-123-456"
       }
     }
   }
@@ -43,6 +44,10 @@ describe Qlt::Response do
     expect(response.price).to be_kind_of Qlt::Price
     expect(response.price.nrc).to eq 123
     expect(response.price.mrc).to eq 321
+  end
+
+  it '#reference_number - returns the QLT reference number' do
+    expect(response.reference_number).to eq "IS-123-456"
   end
 
   describe '#solutions' do
