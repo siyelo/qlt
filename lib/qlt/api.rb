@@ -17,7 +17,7 @@ module Qlt
 
     def prices_lookup
       uri = URI.parse(api_url)
-      uri.query = URI.encode_www_form(build_params)
+      uri.query = URI.encode_www_form(@attrs)
       http = Net::HTTP.new(uri.host, uri.port)
 
       req = Net::HTTP::Get.new(uri.request_uri)
@@ -30,32 +30,6 @@ module Qlt
     end
 
     private
-
-    def filter_params
-      raise ArgumentError.new("missing :latitude") if @attrs[:latitude].nil?
-      raise ArgumentError.new("missing :longitude") if @attrs[:longitude].nil?
-      raise ArgumentError.new("missing :speed") if @attrs[:speed].nil?
-      raise ArgumentError.new("missing :contract_length") if @attrs[:contract_length].nil?
-    end
-
-    def build_params
-      filter_params
-
-      {
-        wireless: @attrs[:with_wireless] || true,
-        lng: @attrs[:longitude],
-        lat: @attrs[:latitude],
-        price: true,
-        sla: @attrs[:sla] || 'economy',
-        speed: @attrs[:speed],
-        term: @attrs[:contract_length],
-        am_name: @attrs[:account_manager],
-        company_name: @attrs[:company_name],
-        address: @attrs[:address],
-        OPT_ref: @attrs[:opt_ref]
-      }
-    end
-
     def api_url
       if Qlt.configuration.env == :production
         "http://awsm.co.za/is/api/json.php"

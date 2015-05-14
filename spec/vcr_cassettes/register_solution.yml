@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://demo.awsm.co.za/is/api/json.php?contract_length=36&latitude=-26.5583&longitude=28.0197&speed=10&with_wireless=true
+    uri: http://demo.awsm.co.za/is/api/json.php?OPT_ref&address&am_name&company_name&lat=-26.5583&lng=28.0197&price=true&sla=economy&speed=10&term=36&wireless=true
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 14 May 2015 08:38:57 GMT
+      - Thu, 14 May 2015 08:43:41 GMT
       Server:
       - Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.6
       X-Powered-By:
@@ -27,12 +27,12 @@ http_interactions:
       Cache-Control:
       - public
       Content-Length:
-      - '47'
+      - '261'
       Content-Type:
       - application/json; charset=UTF-8
     body:
       encoding: US-ASCII
-      string: ! '{"error":"Invalid Latitude or Longitude Value"}'
+      string: ! "{\"lat\":\"-26.5583\",\"lng\":\"28.0197\",\"available_solutions\":[{\"zone\":2,\"type\":\"fibre2\",\"node_name\":\"Meyerton\",\"node_distance\":\"583.76017612524\",\"node_lat\":\"-26.557097\",\"node_lng\":\"28.013987\"}],\"price\":{\"NRC\":13000,\"MRC\":17621},\"QLT_ref\":\"IS-55534d62de0fd\"}\r\n\r\n\t\r\n\r\n"
     http_version: 
-  recorded_at: Thu, 14 May 2015 08:38:59 GMT
+  recorded_at: Thu, 14 May 2015 08:43:44 GMT
 recorded_with: VCR 2.9.0

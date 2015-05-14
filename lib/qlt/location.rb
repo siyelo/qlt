@@ -2,8 +2,8 @@ class Qlt::Location
   attr_reader :latitude, :longitude
 
   def initialize attrs
-    @latitude = attrs[:latitude] || 0.0
-    @longitude = attrs[:longitude] || 0.0
+    @latitude  = attrs.fetch(:latitude, 0.0)
+    @longitude = attrs.fetch(:longitude, 0.0)
   end
 
 end
